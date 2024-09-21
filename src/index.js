@@ -3,11 +3,58 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Addplayer from './Components/Addplayer';
+import Playerlist from './Components/Playerlist';
+import Editplayerlist from './Components/Editplayerlist';
+import Addteam from './Components/Addteam';
+import Teamlist from './Components/Teamlist';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children:[
+      {
+      path: "/Addplayer",
+      element: <Addplayer/>
+  },
+
+  {
+    path: "/playerlist",
+    element: <Playerlist/>
+},
+
+{
+  path: "/editplayer",
+  element: <Editplayerlist/>
+},
+
+{
+  path: "/addteam",
+  element: <Addteam/>
+},
+
+{
+  path: "/teamlist",
+  element: <Teamlist/>
+},
+
+
+
+]
+
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
